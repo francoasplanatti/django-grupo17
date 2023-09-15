@@ -1,6 +1,5 @@
 from django.shortcuts import render
 
-
 def index(request):
     return render(request, "core/index.html")
 
@@ -9,5 +8,3 @@ def personal(request):
 
 def vehiculos(request):
     return render(request, "core/vehiculos.html")
-
-

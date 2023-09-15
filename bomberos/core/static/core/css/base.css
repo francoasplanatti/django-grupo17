@@ -1,0 +1,82 @@
+/* Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap');
+
+:root{
+    --header-height: 3rem;
+
+    /* Tipografía y fuente */
+    --body-font: 'Poppins', sans-serif;
+}
+
+    /* Diseño base */
+    
+*{
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+
+html, body{
+    max-width: 100%;
+    overflow-x: hidden;
+}
+
+html{
+    scroll-behavior: smooth;
+}
+
+body{
+    margin: var(--header-height) 0 0 3rem;
+    font-family: var(--body-font);
+    min-width: 100vw;
+}
+
+ul{
+    list-style: none;
+}
+
+a{
+    text-decoration: none;
+}
+
+    /* Clases reutilizables */
+
+.section{
+    padding: 2rem 0 4rem;
+}
+
+.grid{
+    display: grid;
+    gap: 1.5rem;
+}
+
+    /* Nav */
+
+.nav{
+    max-width: 968px;
+    height: var(--header-height);
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.nav__list{
+    grid-template-columns: repeat(3, 1fr);
+    gap: 3rem;
+}
+
+.nav__link{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+    /* Footer */
+
+.footer{
+    padding-top: 2rem;
+}
+
+.footer__container{
+    text-align: center;
+}
