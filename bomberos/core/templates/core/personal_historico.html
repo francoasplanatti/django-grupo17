@@ -11,6 +11,21 @@
 
     <section class="section">
         <h2>Listado de Personal del año {{ año }}</h2>
+
+        {% if año == '2023' %}
+            <p>Cantidad de personal: {{cant_personal}}</p>
+            <ul>
+                {% for nombre, rol in listado_historico %}
+                    <li>
+                        <p>{{ nombre | upper }} - {{ rol }}</p>
+                    </li>
+                {% endfor %}
+            </ul>
+        {% else %}
+            <p>No existen registros de personal para este año.</p>
+        {% endif %}
+
+
     </section>
 
 {% endblock %}
