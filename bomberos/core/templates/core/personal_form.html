@@ -11,9 +11,12 @@
 
     <section class="section">
         <h2>Gestión de Personal</h2>
-        <div>
-            <a href="{% url 'personal_form' %}" class="nav__link">Añadir nuevo personal</a>
-        </div>
+
+        <form method="POST" action="{% url 'personal_form' %}">
+            {% csrf_token %}
+            {{ create_form.as_p }}
+            <input type="submit">
+        </form>
     </section>
 
 {% endblock %}
