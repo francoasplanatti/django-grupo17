@@ -1,0 +1,40 @@
+{% extends "core/base.html" %}
+{% load static %}
+
+{% block extra_css %}
+    <link rel="stylesheet" href="{% static 'core/css/personal.css' %}">
+{% endblock %}
+
+{% block title %} - Personal{% endblock %}
+{% block section_title %}Jefes de área{% endblock %}
+{% block content %}
+
+    <section class="section">
+        <h2>Listado de Jefes de área</h2>
+        <div>
+            <a href="{% url 'jefes_form' %}" class="nav__link">Añadir nuevo jefe de área</a>
+        </div>
+        <ul>
+            {% for nombre_jefe in jefes_historico %}
+                <li>
+                    <p>{{ nombre_jefe.nombre_completo | title }}</p>
+                    <p>{{ nombre_jefe.area }}</p>
+                    <p>{{ nombre_jefe.email }}</p>
+                    <p>{{ nombre_jefe.dni }}</p>
+                    <p>{{ nombre_jefe.cuit }}</p>
+                </li>
+            {% empty %}
+                <p>Sin jefes de área registrados</p>
+            {% endfor %}
+        </ul>
+    
+        {% if listado_jefes.count > 0 %}
+            <p>cantidad de jefes de área registrados: {{listado_jefes.count}}</p>
+        {% else %}
+            <p>No hay jefes de área registrados</p>
+        {% endif %}
+
+
+    </section>
+
+{% endblock %}

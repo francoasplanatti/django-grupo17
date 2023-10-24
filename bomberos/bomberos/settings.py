@@ -76,10 +76,10 @@ WSGI_APPLICATION = 'bomberos.wsgi.application'
 
 DATABASES = {
     "default": {
-        "ENGINE": "django.db.backends.postgresql",
+        "ENGINE": "django.db.backends.postgresql_psycopg2",
         "NAME": "23655_grupo17",
         "USER": "postgres",
-        "PASSWORD": "pablo",
+        "PASSWORD": "4861230",
         "HOST": "127.0.0.1",
         "PORT": "5432",
     }

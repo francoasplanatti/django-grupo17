@@ -54,8 +54,8 @@ a{
 
 .nav{
     max-width: 968px;
-    height: var(--header-height);
     display: flex;
+    height: var(--header-height);
     justify-content: flex-start;
     align-items: center;
 }
@@ -80,3 +80,4 @@ a{
 .footer__container{
     text-align: center;
 }
+
