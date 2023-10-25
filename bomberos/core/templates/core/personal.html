@@ -2,7 +2,7 @@
 {% load static %}
 
 {% block extra_css %}
-    <link rel="stylesheet" href="{% static 'core/css/personal.css' %}">
+    <link rel="stylesheet" href="{% static 'core/css/base.css' %}">
 {% endblock %}
 
 {% block title %} - Personal{% endblock %}
@@ -11,9 +11,11 @@
 
     <section class="section">
         <h2>Gestión de Personal</h2>
+        <br>
         <div>
-            <a href="{% url 'personal_form' %}" class="nav__link">Añadir nuevo personal</a>
-            <a href="{% url 'jefes_form' %}" class="nav__link">Añadir nuevo jefe de área</a>
+            <a href="{% url 'personal_form' %}" class="nav__link"><span>Nuevo personal</span></a>
+            <a href="{% url 'jefes_form' %}" class="nav__link"><span>Nuevo jefe de área</span></a>
+            
         </div>
     </section>
 
