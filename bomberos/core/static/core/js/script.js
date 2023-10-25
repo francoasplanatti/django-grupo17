@@ -10,7 +10,9 @@ if(formulario){
             title: 'Registro Exitoso',
             showConfirmButton: false,
             timer: 2500,
-            timerProgressBar: true
+            timerProgressBar: true,
+            width: 600,
+            padding: '3em',
         })
         formulario.reset()
     })

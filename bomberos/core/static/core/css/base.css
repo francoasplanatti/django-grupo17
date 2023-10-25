@@ -22,7 +22,7 @@
 }
 
 html {
-    font-size: 62%;
+    /* font-size: 70%; */
     overflow-x: hidden;
 }
 
@@ -49,12 +49,12 @@ header {
 
 header .logo {
     position: relative;
-    width: 7rem;
+    width: 4rem;
 }
 
 header .navbar a {
     display: inline-block;
-    font-size: 2rem;
+    font-size: 1.3rem;
     margin-left: 3rem;
     color: var(--secondary-color);
     font-weight: 900;
@@ -70,11 +70,11 @@ header .modo {
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 3rem;
-    height: 3rem;
+    width: 1.5rem;
+    height: 1.5rem;
     background: linear-gradient(#f00, #000);
     color: #f9f9f9;
-    font-size: 1.5rem;
+    font-size: 0.5rem;
     border-radius: 50%;
     cursor: pointer;
 }
@@ -94,7 +94,7 @@ header .modo {
     display: flex;
     justify-content: center;
     align-items: center;
-    font-size: 1.5rem;
+    font-size: 1rem;
     width: auto;
     height: 5vh;
     gap: 3rem;
@@ -126,7 +126,7 @@ header .modo {
     align-items: center;
     justify-content: center;
     background-color: var(--secondary-color);
-    font-size: 1.8rem;
+    font-size: 1rem;
     color: var(--primary-color);
     font-weight: 900;
     border-radius: 5px;
@@ -170,8 +170,9 @@ header .modo {
 }
 
 .footer__container{
-    font-size: 2rem;
+    font-size: 1rem;
     color: var(--secondary-color);
     font-weight: 900;
     text-align: center;
 }
+
