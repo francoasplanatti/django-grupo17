@@ -10,13 +10,14 @@
 {% block content %}
 
     <section class="section">
-        <h2>Gestión de Personal</h2>
-
-        <form method="POST" action="{% url 'personal_form' %}">
+        <div class="titulo">
+            <h2>Gestión de Personal</h2>
+        </div>
+        <form class="formulario" method="POST" action="{% url 'personal_form' %}">
             {% csrf_token %}
             {{ create_form.as_p }}
-            <input type="submit">
+            <input type="submit" id="formulario">
         </form>
     </section>
-
+    <script src="{% static 'core/js/script.js' %}"></script>
 {% endblock %}

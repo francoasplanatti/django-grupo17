@@ -82,12 +82,26 @@ header .modo {
     /* Clases reutilizables */
 
 .section{
-    padding: 4rem 5rem 4rem;
+    margin-bottom: 10rem;
 }
 
 .grid{
     display: grid;
     gap: 1.5rem;
+}
+
+.titulo{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.5rem;
+    width: auto;
+    height: 5vh;
+    gap: 3rem;
+    margin: 3rem;
+    background-color: var(--secondary-color);
+    color: var(--primary-color);
+    border-radius: 5px;
 }
 
     /* Nav */
@@ -142,9 +156,10 @@ header .modo {
 }
 
 .nav__link:hover::after{
-    transform: scale(400);
+    transform: scale(500);
     background: var(--red-color);
 }
+
 
 
 
