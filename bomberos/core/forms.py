@@ -7,27 +7,32 @@ class CreateForm(forms.Form):
     nombre = forms.CharField(
         label="Nombre", 
         required=True,
-        widget=forms.TextInput(attrs={'class': 'form_nombre'})
+        widget=forms.TextInput(attrs={'class': 'form_style'})
         )
     apellido = forms.CharField(
         label="Apellido", 
-        required=True
+        required=True,
+        widget=forms.TextInput(attrs={'class': 'form_style'})
         )
     dni = forms.IntegerField(
         label="DNI", 
-        required=True
+        required=True,
+        widget=forms.TextInput(attrs={'class': 'form_style'})
         )
     mail = forms.EmailField(
         label="Mail", 
-        required=True
+        required=True,
+        widget=forms.TextInput(attrs={'class': 'form_style'})
         )
     rol = forms.CharField(
         label="Rol", 
-        required=True
+        required=True,
+        widget=forms.TextInput(attrs={'class': 'form_style'})
         )
     fecha_alta = forms.DateField(
         label="Fecha de alta", 
-        required=True
+        required=True,
+        widget=forms.TextInput(attrs={'class': 'form_style'})
         )
     
     def clean_dni(self):

@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 * {
     background-color: lightblue;
 }
@@ -5,4 +6,34 @@
 .jefes_form{
     display: grid;
     text-align: center;
+=======
+form, input{
+    font-size: 1rem;
+    color: var(--secondary-color);
+    font-weight: 900;
+    text-align: center;
+    padding: 10px 10px;
+    
+}
+.formulario{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+}
+
+
+
+.form_style{
+    border-color: black;
+    border:1px solid var(--secondary-color);
+    border-radius: 5px;
+}
+
+input[type="submit"]{
+    background-color: var(--secondary-color);
+    color: var(--primary-color);
+    border-radius: 5px;
+    width: 25%;
+    justify-content: center;
+>>>>>>> 59a78dad9bb9145f5939b78d64075e695ca056c9
 }

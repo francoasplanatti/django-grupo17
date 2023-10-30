@@ -10,14 +10,14 @@
 {% block content %}
 
     <section class="section">
-        <h2>Gestión de Jefes de área</h2>
-        <div class="jefes_form">
-            <form method="POST" action="{% url 'jefes_form' %}">
-                {% csrf_token %}
-                {{ form.as_p }}
-                <input type="submit">
-            </form>
+        <div class="titulo">
+            <h2>Gestión de Jefes de área</h2>
         </div>
+        <form class="formulario" method="POST" action="{% url 'jefes_form' %}">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <input type="submit">
+        </form>
     </section>
 
 {% endblock %}

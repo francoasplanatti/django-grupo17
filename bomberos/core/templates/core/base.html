@@ -1,37 +1,62 @@
 {% load static %}
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cuartel No. 17{% block title %}{% endblock %}</title>
+    <title>SGIB</title>
+    <link rel="shortcut icon" href="{% static 'core/img/favicon.png'%}" type="image/x-icon">
     <link rel="stylesheet" href="{% static 'core/css/base.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+    <script src="https://use.fontawesome.com/4f49413ad7.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    
     {% block extra_css%}{%endblock%}
 </head>
-
 <body>
+    <header>
 
-    <header class="header">
-        <h1>Cuartel de Bomberos No. 17</h1>
-        <h2>{% block section_title %} {% endblock %}</h2>
+        <img src="{% static '/core/img/logo_vertical.svg'%}" alt="" class="logo">
+        
+        <nav class="navbar">
+            <a href="{% url 'index' %}">Home</a>
+            <a href="{% url 'personal' %}">Personal</a>
+            <a href="{% url 'vehiculos' %}">Vehiculos</a>
+            <a href="">Contacto</a>
+        </nav>
+
+        <i class="fa-solid fa-moon modo"></i>
     </header>
 
-    <nav class="nav">
-        <ul class="nav__list grid">
-            <li><a href="{% url 'index' %}" class="nav__link">Inicio</a></li>
-            <li><a href="{% url 'personal' %}" class="nav__link">Gestión de Personal</a></li>
-            <li><a href="{% url 'vehiculos' %}" class="nav__link">Gestión de Vehículos</a></li>
-        </ul>
-    </nav>
-
-    <main class="main">
+    <main>
         {% block content %}{% endblock %}
     </main>
 
     <footer class="footer">
         {% include "core/footer.html" %}
     </footer>
-    
+    <script src="{% static 'core/js/script.js' %}"></script>
+
+    {% if messages %}
+        {% for m in messages %}
+            <script>
+                Swal.fire({
+                    "position": 'center',
+                    "icon": 'success',
+                    "title": 'Registro Exitoso',
+                    "text": "{{m}}",
+                    "showConfirmButton": false,
+                    "timer": 2500,
+                    "timerProgressBar": true,
+                    
+                })
+            </script>
+        {% endfor %}    
+    {% endif %}
+    {% block js %}
+    {% endblock %}
+
+
 </body>
+
 </html>

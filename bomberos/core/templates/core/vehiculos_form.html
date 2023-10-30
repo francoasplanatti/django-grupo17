@@ -1,16 +1,21 @@
 {% extends "core/base.html" %}
 {% load static %}
 {% block extra_css%}
-    <link rel="stylesheet" href="{% static 'core/css/vehiculos.css' %}">
+    <link rel="stylesheet" href="{% static 'core/css/personal.css' %}">
 {%endblock%}
 
 {% block title %} - Registro de vehículos{% endblock %}
 {% block section_title %}Registro de vehículos{% endblock %}
 {% block content %}
-    <h3>Datos del vehículo</h3>
-    <form method="post" action="{% url 'vehiculos_form' %}">
-        {% csrf_token %}
-        {{ vehiculos_form.as_p }}
-        <input type="submit">
-    </form>
+    <section class="section">
+        <div class="titulo">
+            <h2>Datos del vehículo</h2>
+        </div>
+    
+        <form class="formulario" method="post" action="{% url 'vehiculos_form' %}">
+            {% csrf_token %}
+            {{ vehiculos_form.as_p }}
+            <input type="submit">
+        </form>
+    </section>
 {% endblock %}
