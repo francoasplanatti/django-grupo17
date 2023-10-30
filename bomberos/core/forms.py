@@ -52,7 +52,7 @@ class VehiculosForm(forms.Form):
         label="Modelo", 
         required=True
         )
-    patente = forms.IntegerField(
+    patente = forms.CharField(
         label="Patente", 
         required=True
         )
@@ -60,6 +60,12 @@ class VehiculosForm(forms.Form):
         label="Vencimiento del VTV", 
         required=True
         )
+    
+    def clean_patente(self):
+        if len(str(self.cleaned_data["patente"])) > 7 or len(str(self.cleaned_data["patente"])) < 6: 
+            raise ValidationError("La patente no es válida")
+        
+        return self.cleaned_data["patente"]
     
 
 class JefesModelForm(forms.ModelForm):

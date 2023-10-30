@@ -11,12 +11,13 @@
 
     <section class="section">
         <h2>Gestión de Jefes de área</h2>
-
-        <form method="POST" action="{% url 'jefes_form' %}">
-            {% csrf_token %}
-            {{ form.as_p }}
-            <input type="submit">
-        </form>
+        <div class="jefes_form">
+            <form method="POST" action="{% url 'jefes_form' %}">
+                {% csrf_token %}
+                {{ form.as_p }}
+                <input type="submit">
+            </form>
+        </div>
     </section>
 
 {% endblock %}
