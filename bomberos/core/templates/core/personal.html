@@ -2,7 +2,7 @@
 {% load static %}
 
 {% block extra_css %}
-    <link rel="stylesheet" href="{% static 'core/css/base.css' %}">
+    <link rel="stylesheet" href="{% static 'core/css/personal.css' %}">
 {% endblock %}
 
 {% block title %} - Personal{% endblock %}
@@ -14,9 +14,14 @@
             <h2>Gestión de Personal</h2>
         </div>
         
-        <div>
+        <div class="personal-nav">
             <a href="{% url 'personal_form' %}" class="nav__link"><span>Nuevo personal</span></a>
             <a href="{% url 'jefes_form' %}" class="nav__link"><span>Nuevo jefe de área</span></a>
+            {% if user.is_authenticated %}
+                {% if perms.core.view_jefe %}
+                    <a href="{% url 'jefes_historico' %}" class="nav__link"><span>Jefes histórico</span></a>
+                {% endif %}
+            {% endif %}
         </div>
     </section>
 

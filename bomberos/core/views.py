@@ -1,6 +1,8 @@
 from django.shortcuts import render, redirect
 from django.urls import reverse
 from django.contrib import messages
+from django.contrib.auth.decorators import login_required
+from django.contrib.auth.mixins import LoginRequiredMixin, PermissionRequiredMixin
 from django.db import IntegrityError
 from django.views.generic.edit import CreateView
 from django.views.generic.list import ListView
@@ -28,6 +30,7 @@ def personal_form(request):
 
     return render(request, "core/personal_form.html", context)
 
+@login_required
 def personal_historico(request, year):
 
     listado = Bombero.objects.all().order_by('dni')
@@ -81,7 +84,8 @@ class JefeCreateView(CreateView):
     fields = '__all__'
 
 
-class JefeListView(ListView):
+class JefeListView(LoginRequiredMixin, PermissionRequiredMixin, ListView):
+    permission_required = ("core.view_jefe")
     model = Jefe
     context_object_name = 'jefes_historico'
     template_name = 'core/jefes_historico.html'

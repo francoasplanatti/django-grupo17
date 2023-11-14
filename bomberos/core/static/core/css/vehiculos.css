@@ -1,3 +1,50 @@
-* {
-    background-color: violet;
+form, input{
+    font-size: 1rem;
+    color: var(--secondary-color);
+    font-weight: 900;
+    /* text-align: center; */
+    padding: 10px 10px;
+}
+
+.section{
+    margin: 0;
+}
+
+.formulario{
+    display: grid;
+    padding: 0 50px 0;
+    grid-template-columns: repeat(2, 1fr);
+    /* grid-template-rows: repeat(1, 1fr); */
+    gap: 2rem;
+}
+
+.vehiculos-nav{
+    display: flex;
+    justify-content: center;
+    gap: 50px;
+    padding: 0 50px 0;
+}
+
+:required{
+    width: 100%;
+    margin-top: 5px;
+    border-color: black;
+    border:1px solid var(--secondary-color);
+    border-radius: 5px;
+}
+
+input[type="submit"]{
+    display: flex;
+    background-color: var(--secondary-color);
+    color: var(--primary-color);
+    border-radius: 5px;
+    width: 25%;
+    justify-content: center;
+}
+
+.submit-btn{
+    grid-area: 4 / 1 / 5 / 3;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }

@@ -11,9 +11,6 @@
 
     <section class="section">
         <h2>Listado de Jefes de área</h2>
-        <div>
-            <a href="{% url 'jefes_form' %}" class="nav__link">Añadir nuevo jefe de área</a>
-        </div>
         <ul>
             {% for nombre_jefe in jefes_historico %}
                 <li>
@@ -28,11 +25,11 @@
             {% endfor %}
         </ul>
     
-        {% if listado_jefes.count > 0 %}
+        <!-- {% if listado_jefes.count > 0 %}
             <p>cantidad de jefes de área registrados: {{listado_jefes.count}}</p>
         {% else %}
             <p>No hay jefes de área registrados</p>
-        {% endif %}
+        {% endif %} -->
 
 
     </section>

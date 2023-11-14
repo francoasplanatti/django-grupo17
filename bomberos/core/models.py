@@ -37,6 +37,9 @@ class Vehiculo(models.Model):
     patente = models.CharField(max_length=100, verbose_name="Patente")
     vencimiento_vtv = models.DateField(verbose_name="Fecha de vencimiento")
 
+    def __str__(self):
+        return self.marca + " " + self.modelo
+
 
 class Area(models.Model):
     nombre = models.CharField(max_length=150, verbose_name="Nombre")
@@ -44,8 +47,14 @@ class Area(models.Model):
     jefe = models.ForeignKey(Jefe, on_delete=models.CASCADE, related_name="+")
     bomberos = models.ManyToManyField(Bombero, through="Alta", related_name="+")
 
+    def __str__(self):
+        return self.nombre
+
 
 class Alta(models.Model):
     bombero = models.ForeignKey(Bombero, on_delete=models.CASCADE)
     area = models.ForeignKey(Area, on_delete=models.CASCADE)
     fecha = models.DateField(verbose_name="Fecha de alta")
+
+    def __str__(self):
+        return self.bombero.nombre_completo() + " - " + self.area.nombre()

@@ -15,15 +15,25 @@
 </head>
 <body>
     <header>
-
-        <img src="{% static '/core/img/logo_vertical.svg'%}" alt="" class="logo">
+        <a href="{% url 'index' %}">
+            <img src="{% static '/core/img/logo_vertical.svg'%}" alt="" class="logo">
+        </a>
         
         <nav class="navbar">
-            <a href="{% url 'index' %}">Home</a>
+            <!-- <a href="{% url 'index' %}">Home</a> -->
             <a href="{% url 'personal' %}">Personal</a>
             <a href="{% url 'vehiculos' %}">Vehiculos</a>
             <a href="">Contacto</a>
         </nav>
+
+        <div class="actions">
+            {% if not user.is_authenticated %}
+                <a href="{% url 'login' %}"><b>Iniciar sesión</b></a>
+            {% else %}
+                <p>Hola, <b>{{user.username}}</b></p>
+                <a class="logout" href="{% url 'logout' %}"><b>Cerrar sesión</b></a>
+            {% endif %}
+        </div>
 
         <i class="fa-solid fa-moon modo"></i>
     </header>

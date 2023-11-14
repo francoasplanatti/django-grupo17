@@ -1,7 +1,7 @@
 {% extends "core/base.html" %}
 {% load static %}
 {% block extra_css%}
-    <link rel="stylesheet" href="{% static 'core/css/personal.css' %}">
+    <link rel="stylesheet" href="{% static 'core/css/vehiculos.css' %}">
 {%endblock%}
 
 {% block title %} - Registro de vehículos{% endblock %}
@@ -15,7 +15,9 @@
         <form class="formulario" method="post" action="{% url 'vehiculos_form' %}">
             {% csrf_token %}
             {{ vehiculos_form.as_p }}
-            <input type="submit">
+            <div class="submit-btn">
+                <input type="submit">
+            </div>
         </form>
     </section>
 {% endblock %}
