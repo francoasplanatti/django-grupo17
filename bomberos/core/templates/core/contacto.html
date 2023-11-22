@@ -1,0 +1,25 @@
+{% extends "core/base.html" %}
+{% load static %}
+
+{% block extra_css %}
+    <link rel="stylesheet" href="{% static 'core/css/personal.css' %}">
+{% endblock %}
+
+{% block title %} - Personal{% endblock %}
+{% block section_title %}{% endblock %}
+{% block content %}
+
+    <section class="section">
+        <div class="titulo">
+            <h2>Contacto</h2>
+        </div>
+        <form class="formulario" method="POST" action="{% url 'contacto' %}">
+            {% csrf_token %}
+            {{ create_form.as_p }}
+            <div class="submit-btn">
+                <input type="submit" id="formulario">
+            </div>
+        </form>
+    </section>
+    
+{% endblock %}

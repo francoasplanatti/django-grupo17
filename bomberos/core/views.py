@@ -6,7 +6,7 @@ from django.contrib.auth.mixins import LoginRequiredMixin, PermissionRequiredMix
 from django.db import IntegrityError
 from django.views.generic.edit import CreateView
 from django.views.generic.list import ListView
-from .forms import CreateForm, VehiculosForm
+from .forms import CreateForm, VehiculosForm, ContactoForm
 from .models import Bombero, Jefe, Vehiculo
 
 def index(request):
@@ -90,3 +90,18 @@ class JefeListView(LoginRequiredMixin, PermissionRequiredMixin, ListView):
     context_object_name = 'jefes_historico'
     template_name = 'core/jefes_historico.html'
     ordering = ['cuit']
+
+def contacto(request):
+    if request.method == "POST":
+        formulario = ContactoForm(request.POST)
+        if formulario.is_valid():
+            messages.info(request, "Mensaje Enviado Correctamente")
+            return redirect(reverse("contacto"))
+    else:
+        formulario = ContactoForm()
+
+    context = {
+        'create_form': formulario
+    }
+
+    return render(request, "core/contacto.html", context)

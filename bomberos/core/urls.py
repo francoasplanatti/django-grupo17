@@ -13,4 +13,5 @@ urlpatterns = [
     re_path(r'personal/(?P<year>\d{4})/$', views.personal_historico, name='personal_historico'),
     path('jefes/form', views.JefeCreateView.as_view(), name="jefes_form"),
     path('jefes/historico', views.JefeListView.as_view(), name="jefes_historico"),
+    path('contacto', views.contacto, name='contacto'),
 ]

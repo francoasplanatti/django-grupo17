@@ -89,3 +89,31 @@ class JefesModelForm(forms.ModelForm):
         
         self.changed_data['cuit'] = cuit
         return self.changed_data['cuit']
+    
+class ContactoForm(forms.Form):
+    nombre = forms.CharField(
+        label="Nombre", 
+        required=True,
+        widget=forms.TextInput(attrs={'class': 'form_style'})
+        )
+    apellido = forms.CharField(
+        label="Apellido", 
+        required=True,
+        widget=forms.TextInput(attrs={'class': 'form_style'})
+        )
+    dni = forms.IntegerField(
+        label="DNI", 
+        required=True,
+        widget=forms.TextInput(attrs={'class': 'form_style'})
+        )
+    mail = forms.EmailField(
+        label="Mail", 
+        required=True,
+        widget=forms.TextInput(attrs={'class': 'form_style'})
+        )
+    mensaje = forms.CharField(
+        label="Mensaje", 
+        required=True,
+        widget=forms.Textarea(attrs={'class': 'form_style'})
+        )
+    
