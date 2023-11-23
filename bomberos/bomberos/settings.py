@@ -33,13 +33,13 @@ MESSAGE_STORAGE = "django.contrib.messages.storage.cookie.CookieStorage"
 # Application definition
 
 INSTALLED_APPS = [
-    'django.contrib.admin',
+    'django.contrib.admin.apps.SimpleAdminConfig',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'core', #aca registramos la nueva APP
+    'core',
 ]
 
 MIDDLEWARE = [

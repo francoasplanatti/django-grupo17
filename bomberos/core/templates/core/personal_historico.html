@@ -24,7 +24,9 @@
                 <th>DNI</th>
                 <th>Placa</th>
                 <th>Rol</th>
+                {% if perms.core.view_jefe %}
                 <th colspan="2">Opciones</th>
+                {% endif %}
             </tr>
         </thead>
         <tbody>
@@ -36,8 +38,10 @@
                 <td>{{ bombero.dni }}</td>
                 <td>{{ bombero.numero_placa }}</td>
                 <td>{{ bombero.rol }}</td>
+                {% if perms.core.view_jefe %}
                 <td class="editar"><a href="../editarBombero/{{ bombero.dni }}"><button class="editar-btn">Editar</button></a></td>
                 <td class="eliminar"><a href="../eliminarBombero/{{ bombero.dni }}"><button class="eliminar-btn">Eliminar</button></a></td>
+                {% endif %}
             </tr>
             {% empty %}
             <tr>

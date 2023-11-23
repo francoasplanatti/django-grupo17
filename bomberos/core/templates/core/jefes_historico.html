@@ -23,7 +23,9 @@
                     <th>Correo</th>
                     <th>DNI</th>
                     <th>CUIT</th>
+                    {% if perms.core.change_jefe %}
                     <th colspan="2">Opciones</th>
+                    {% endif %}
                 </tr>
             </thead>
             <tbody>
@@ -34,8 +36,10 @@
                     <td>{{ nombre_jefe.email }}</td>
                     <td>{{ nombre_jefe.dni }}</td>
                     <td>{{ nombre_jefe.cuit }}</td>
+                    {% if perms.core.change_jefe %}
                     <td class="editar"><a href="../editarJefe/{{ nombre_jefe.dni }}"><button class="editar-btn">Editar</button></a></td>
                     <td class="eliminar"><a href="../eliminarJefe/{{ nombre_jefe.dni }}"><button class="eliminar-btn">Eliminar</button></a></td>
+                    {% endif %}
                 </tr>
                 {% empty %}
                 <tr>

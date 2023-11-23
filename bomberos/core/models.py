@@ -44,8 +44,8 @@ class Vehiculo(models.Model):
 class Area(models.Model):
     nombre = models.CharField(max_length=150, verbose_name="Nombre")
     descripcion = models.CharField(max_length=150, null=True, verbose_name="Descripcion del área") 
-    jefe = models.ForeignKey(Jefe, on_delete=models.CASCADE, related_name="+")
-    bomberos = models.ManyToManyField(Bombero, through="Alta", related_name="+")
+    jefe = models.ForeignKey(Jefe, on_delete=models.CASCADE, related_name="areas")
+    bomberos = models.ManyToManyField(Bombero, through="Alta", related_name="areas")
 
     def __str__(self):
         return self.nombre
@@ -57,4 +57,4 @@ class Alta(models.Model):
     fecha = models.DateField(verbose_name="Fecha de alta")
 
     def __str__(self):
-        return self.bombero.nombre_completo() + " - " + self.area.nombre()
+        return f"{self.bombero.nombre_completo()} - {self.area.nombre}"
