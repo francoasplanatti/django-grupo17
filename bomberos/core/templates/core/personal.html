@@ -15,11 +15,10 @@
         </div>
         
         <div class="personal-nav">
-            <a href="{% url 'personal_form' %}" class="nav__link"><span>Nuevo personal</span></a>
-            <a href="{% url 'jefes_form' %}" class="nav__link"><span>Nuevo jefe de área</span></a>
+            <a href="{% url 'personal_historico' %}" class="nav__link"><span>Bomberos</span></a>
             {% if user.is_authenticated %}
                 {% if perms.core.view_jefe %}
-                    <a href="{% url 'jefes_historico' %}" class="nav__link"><span>Jefes histórico</span></a>
+                    <a href="{% url 'jefes_historico' %}" class="nav__link"><span>Jefes de área</span></a>
                 {% endif %}
             {% endif %}
         </div>

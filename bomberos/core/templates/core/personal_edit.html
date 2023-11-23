@@ -11,7 +11,7 @@
 
     <section class="section">
         <div class="titulo">
-            <h2>Crear nuevo personal</h2>
+            <h2>Editar personal</h2>
         </div>
         <div class="errors">
             {% if form.errors %}
@@ -24,7 +24,7 @@
                 {% endfor %}
             {% endif %}
         </div>
-        <form method="POST" action="{% url 'personal_form' %}">
+        <form method="POST" action="{% url 'editarBombero' bombero.dni %}">
             {% csrf_token %}
             <div class="formulario">
                 {% for field in form %}

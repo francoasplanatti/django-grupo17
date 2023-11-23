@@ -2,7 +2,6 @@ form, input{
     font-size: 1rem;
     color: var(--secondary-color);
     font-weight: 900;
-    /* text-align: center; */
     padding: 10px 10px;
 }
 
@@ -43,6 +42,7 @@ form, input{
     display: flex;
     justify-content: center;
     align-items: center;
+    margin-top: 20px;
 }
 
 input[type="submit"]{
@@ -60,4 +60,112 @@ input[type="submit"]{
     border-color: black;
     border:1px solid var(--secondary-color);
     border-radius: 5px;
+}
+
+table{
+    border-collapse: collapse;
+    width: 90%;
+    margin: 0 auto;
+    cursor: pointer;
+    border-radius: 300px;
+}
+
+.tabla {
+    background-color: rgb(255, 100, 100);
+    padding: 2px;
+    border-collapse:separate;
+    border-spacing: 0px;
+    border-radius: 10px;
+    -moz-border-radius:10px;
+    -webkit-border-radius: 5px;    
+}
+
+td, th{
+    text-align: center;
+    padding: 10px;
+}
+
+tr{
+    transition: 0.2s all;
+}
+
+tr:hover{
+    background-color: rgb(255, 75, 75);
+}
+
+tr:active{
+    background-color: rgb(255, 40, 40);
+}
+
+table thead{
+    background-color: red;
+    color: var(--primary-color);
+}
+
+table tbody{
+    background-color: rgb(255, 100, 100);
+    color: var(--primary-color);
+}
+
+table tfoot{
+    background-color: rgb(255, 100, 100);
+    color: var(--primary-color);
+}
+
+.editar, .eliminar{
+    padding: 10px 0;
+}
+
+.editar-btn{
+    font-size: 1rem;
+    color: var(--primary-color);
+    font-weight: 500;
+    background-color: rgb(63, 131, 0);
+    border-radius: 20px;
+    padding: 5px 20px;
+    border: none;
+}
+
+.editar-btn:hover{
+    background-color: rgb(38, 78, 0);
+}
+
+.eliminar-btn{
+    font-size: 1rem;
+    color: var(--primary-color);
+    font-weight: 500;
+    background-color: red;
+    border-radius: 20px;
+    padding: 5px 20px;
+    border: none;
+}
+
+.eliminar-btn:hover{
+    background-color: rgb(173, 0, 0);
+}
+
+.add-btn{
+    margin: 20px 0;
+    display: flex;
+    justify-content: center;
+}
+
+.jefe-btn{
+    display: flex;
+    height: 40px;
+    background-color: var(--secondary-color);
+    color: var(--primary-color);
+    font-weight: 500;
+    border-radius: 5px;
+    width: 25%;
+    justify-content: center;
+    align-items: center;
+}
+
+.errors{
+    text-align: center;
+}
+
+ul{
+    padding: 20px 0;
 }

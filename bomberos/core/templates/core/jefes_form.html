@@ -11,11 +11,26 @@
 
     <section class="section">
         <div class="titulo">
-            <h2>Gestión de Jefes de área</h2>
+            <h2>Crear nuevo jefe de área</h2>
         </div>
-        <form class="formulario" method="POST" action="{% url 'jefes_form' %}">
+        <div class="errors">
+            {% if form.errors %}
+                {% for field in form %}
+                    {% for error in field.errors %}
+                        Ha ocurrido un problema con el campo <b>{{field.label}}</b>.
+                        <br>
+                        <b>{{ error|escape }}</b>
+                    {% endfor %}
+                {% endfor %}
+            {% endif %}
+        </div>
+        <form method="POST" action="{% url 'jefes_form' %}">
             {% csrf_token %}
-            {{ form.as_p }}
+            <div class="formulario">
+                {% for field in form %}
+                <p>{{ field.label_tag }} {{ field }}</p>
+                {% endfor %}
+            </div>
             <div class="submit-btn">
                 <input type="submit">
             </div>

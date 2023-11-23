@@ -10,28 +10,51 @@
 {% block content %}
 
     <section class="section">
-        <h2>Listado de Jefes de área</h2>
-        <ul>
-            {% for nombre_jefe in jefes_historico %}
-                <li>
-                    <p>{{ nombre_jefe.nombre_completo | title }}</p>
-                    <p>{{ nombre_jefe.area }}</p>
-                    <p>{{ nombre_jefe.email }}</p>
-                    <p>{{ nombre_jefe.dni }}</p>
-                    <p>{{ nombre_jefe.cuit }}</p>
-                </li>
-            {% empty %}
-                <p>Sin jefes de área registrados</p>
-            {% endfor %}
-        </ul>
-    
-        <!-- {% if listado_jefes.count > 0 %}
-            <p>cantidad de jefes de área registrados: {{listado_jefes.count}}</p>
-        {% else %}
-            <p>No hay jefes de área registrados</p>
-        {% endif %} -->
 
+        <div class="titulo">
+            <h2>Gestión de jefes de área</h2>
+        </div>
 
+        <table class="tabla">
+            <thead>
+                <tr>
+                    <th>Nombre</th>
+                    <th>Área</th>
+                    <th>Correo</th>
+                    <th>DNI</th>
+                    <th>CUIT</th>
+                    <th colspan="2">Opciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for nombre_jefe in jefes_historico %}
+                <tr>
+                    <td>{{ nombre_jefe.nombre_completo }}</td>
+                    <td>{{ nombre_jefe.area }}</td>
+                    <td>{{ nombre_jefe.email }}</td>
+                    <td>{{ nombre_jefe.dni }}</td>
+                    <td>{{ nombre_jefe.cuit }}</td>
+                    <td class="editar"><a href="../editarJefe/{{ nombre_jefe.dni }}"><button class="editar-btn">Editar</button></a></td>
+                    <td class="eliminar"><a href="../eliminarJefe/{{ nombre_jefe.dni }}"><button class="eliminar-btn">Eliminar</button></a></td>
+                </tr>
+                {% empty %}
+                <tr>
+                </tr>
+                {% endfor %}
+            </tbody>
+            <tfoot>
+                <tr>
+                    {% if jefes_historico.count > 0 %}
+                        <td colspan="7">Cantidad de jefes de área: {{ jefes_historico.count }}</td>
+                    {% else %}
+                        <td colspan="7">No hay jefes de área registrados</td>
+                    {% endif %}
+                </tr>
+            </tfoot>
+        </table>
+        <div class="add-btn">
+            <a href="{% url 'jefes_form' %}" class="jefe-btn"><span>Añadir un jefe de área</span></a>
+        </div>
     </section>
 
 {% endblock %}

@@ -6,12 +6,12 @@
 {% endblock %}
 
 {% block title %} - Personal{% endblock %}
-{% block section_title %}Personal{% endblock %}
+{% block section_title %}Jefes de área{% endblock %}
 {% block content %}
 
     <section class="section">
         <div class="titulo">
-            <h2>Crear nuevo personal</h2>
+            <h2>Editar jefe de área</h2>
         </div>
         <div class="errors">
             {% if form.errors %}
@@ -24,7 +24,7 @@
                 {% endfor %}
             {% endif %}
         </div>
-        <form method="POST" action="{% url 'personal_form' %}">
+        <form method="POST" action="{% url 'editarJefe' jefe.dni %}">
             {% csrf_token %}
             <div class="formulario">
                 {% for field in form %}
@@ -36,5 +36,5 @@
             </div>
         </form>
     </section>
-    
+
 {% endblock %}

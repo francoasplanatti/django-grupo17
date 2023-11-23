@@ -1,40 +1,13 @@
 from django import forms
 from django.core.exceptions import ValidationError
-from .models import Jefe
+from .models import Jefe, Bombero
 
 
-class CreateForm(forms.Form):
-    nombre = forms.CharField(
-        label="Nombre", 
-        required=True,
-        widget=forms.TextInput(attrs={'class': 'form_style'})
-        )
-    apellido = forms.CharField(
-        label="Apellido", 
-        required=True,
-        widget=forms.TextInput(attrs={'class': 'form_style'})
-        )
-    dni = forms.IntegerField(
-        label="DNI", 
-        required=True,
-        widget=forms.TextInput(attrs={'class': 'form_style'})
-        )
-    mail = forms.EmailField(
-        label="Mail", 
-        required=True,
-        widget=forms.TextInput(attrs={'class': 'form_style'})
-        )
-    rol = forms.CharField(
-        label="Rol", 
-        required=True,
-        widget=forms.TextInput(attrs={'class': 'form_style'})
-        )
-    fecha_alta = forms.DateField(
-        label="Fecha de alta", 
-        required=True,
-        widget=forms.TextInput(attrs={'class': 'form_style'})
-        )
-    
+class BomberosModelForm(forms.ModelForm):
+    class Meta:
+        model = Bombero
+        fields = '__all__'
+
     def clean_dni(self):
         if len(str(self.cleaned_data["dni"])) > 8 or len(str(self.cleaned_data["dni"])) < 7: 
             raise ValidationError("El DNI debe ser válido")
@@ -79,7 +52,7 @@ class JefesModelForm(forms.ModelForm):
         fields = '__all__'
 
     def clean_cuit(self):
-        cuit = self.cuit.strip()
+        cuit = self.cleaned_data.get('cuit', '').strip()
 
         if not cuit.isdigit():
             raise ValidationError("El CUIT debe contener solo dígitos.")
@@ -87,33 +60,17 @@ class JefesModelForm(forms.ModelForm):
         if len(cuit) != 11:
             raise ValidationError("El CUIT debe tener 11 dígitos.")
         
-        self.changed_data['cuit'] = cuit
-        return self.changed_data['cuit']
+        return cuit
     
 class ContactoForm(forms.Form):
-    nombre = forms.CharField(
-        label="Nombre", 
+    titulo = forms.CharField(
+        label="Título", 
         required=True,
-        widget=forms.TextInput(attrs={'class': 'form_style'})
-        )
-    apellido = forms.CharField(
-        label="Apellido", 
-        required=True,
-        widget=forms.TextInput(attrs={'class': 'form_style'})
-        )
-    dni = forms.IntegerField(
-        label="DNI", 
-        required=True,
-        widget=forms.TextInput(attrs={'class': 'form_style'})
-        )
-    mail = forms.EmailField(
-        label="Mail", 
-        required=True,
-        widget=forms.TextInput(attrs={'class': 'form_style'})
+        widget=forms.TextInput(attrs={'class': 'form_style', 'placeholder':'Inserte un título'})
         )
     mensaje = forms.CharField(
         label="Mensaje", 
         required=True,
-        widget=forms.Textarea(attrs={'class': 'form_style'})
+        widget=forms.Textarea(attrs={'class': 'form_style', 'placeholder':'Inserte un mensaje'})
         )
     

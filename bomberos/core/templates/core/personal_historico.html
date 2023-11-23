@@ -9,23 +9,54 @@
 {% block section_title %}{% endblock %}
 {% block content %}
 
-    <section class="section">
-        <h2>Listado de Personal del año {{ año }}</h2>
+<section class="section">
 
-        {% if año == '2023' %}
-            <p>Cantidad de personal: {{cant_personal}}</p>
-            <ul>
-                {% for nombre, rol in listado_historico %}
-                    <li>
-                        <p>{{ nombre | upper }} - {{ rol }}</p>
-                    </li>
-                {% endfor %}
-            </ul>
-        {% else %}
-            <p>No existen registros de personal para este año.</p>
-        {% endif %}
+    <div class="titulo">
+        <h2>Gestión de personal</h2>
+    </div>
 
-
-    </section>
+    <table class="tabla">
+        <thead>
+            <tr>
+                <th>Nombre</th>
+                <th>Área</th>
+                <th>Correo</th>
+                <th>DNI</th>
+                <th>Placa</th>
+                <th>Rol</th>
+                <th colspan="2">Opciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for bombero in personal_historico %}
+            <tr>
+                <td>{{ bombero.nombre_completo }}</td>
+                <td>{{ bombero.area }}</td>
+                <td>{{ bombero.email }}</td>
+                <td>{{ bombero.dni }}</td>
+                <td>{{ bombero.numero_placa }}</td>
+                <td>{{ bombero.rol }}</td>
+                <td class="editar"><a href="../editarBombero/{{ bombero.dni }}"><button class="editar-btn">Editar</button></a></td>
+                <td class="eliminar"><a href="../eliminarBombero/{{ bombero.dni }}"><button class="eliminar-btn">Eliminar</button></a></td>
+            </tr>
+            {% empty %}
+            <tr>
+            </tr>
+            {% endfor %}
+        </tbody>
+        <tfoot>
+            <tr>
+                {% if personal_historico.count > 0 %}
+                    <td colspan="7">Cantidad de personal: {{ personal_historico.count }}</td>
+                {% else %}
+                    <td colspan="7">No hay personal registrado</td>
+                {% endif %}
+            </tr>
+        </tfoot>
+    </table>
+    <div class="add-btn">
+        <a href="{% url 'personal_form' %}" class="jefe-btn"><span>Añadir un nuevo personal</span></a>
+    </div>
+</section>
 
 {% endblock %}

@@ -3,16 +3,38 @@ table {
     justify-content: center;
     background-color: rgb(255, 71, 71);
     color: white;
-    padding: 50px;
+    padding: 100px 50px 10px;
 }
 
 input {
-    padding: 5px;
+    padding: 5px 20px 5px;
     margin: 5px;
     border-radius: 5px;
+    font-size: 1rem;
 }
 
 form {
     background-color: rgb(255, 71, 71);
     text-align: center;
+}
+
+input[type="submit"]{
+    font-size: 1rem;
+    color: var(--secondary-color);
+    font-weight: 900;
+    padding: 10px 10px;
+    display: flex;
+    background-color: var(--secondary-color);
+    color: var(--primary-color);
+    border-radius: 5px;
+    width: 25%;
+    justify-content: center;
+}
+
+.submit-btn{
+    grid-area: 4 / 1 / 5 / 3;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-bottom: 100px;
 }

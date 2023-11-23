@@ -1,0 +1,61 @@
+form, input, #id_mensaje{
+    font-size: 1rem;
+    color: var(--primary-color);
+    font-weight: 900;
+    padding: 10px 10px;
+}
+
+.titulo{
+    margin-top: 0;
+}
+
+.section{
+    margin: 0;
+    padding: 3rem 0 3rem;
+    background-color: rgb(255, 71, 71);
+}
+
+.formulario{
+    display: flex;
+    flex-direction: column;
+    padding: 0 50px 0;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+}
+
+.form_style{
+    width: 100%;
+    margin-top: 5px;
+    border-color: black;
+    border:1px solid var(--secondary-color);
+    border-radius: 5px;
+}
+
+.submit-btn{
+    grid-area: 4 / 1 / 5 / 3;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+input[type="submit"]{
+    display: flex;
+    background-color: var(--secondary-color);
+    color: var(--primary-color);
+    border-radius: 5px;
+    width: 25%;
+    justify-content: center;
+}
+
+:required{
+    width: 100%;
+    margin-top: 5px;
+    border-color: black;
+    border:1px solid var(--secondary-color);
+    border-radius: 5px;
+}
+
+input[type="text"], #id_mensaje{
+    color: var(--secondary-color);
+}
+
