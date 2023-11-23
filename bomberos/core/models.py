@@ -1,6 +1,7 @@
 from django.db import models
 from django.core.exceptions import ValidationError
 
+
 class Persona(models.Model):
     nombre = models.CharField(max_length=30, verbose_name="Nombre")
     apellido = models.CharField(max_length=30, verbose_name="Apellido")
@@ -22,6 +23,7 @@ class Persona(models.Model):
     def __str__(self):
         return self.nombre_completo()
     
+
 class Bombero(Persona):
     numero_placa = models.CharField(max_length=100, verbose_name="Numero de placa")
     rol = models.CharField(max_length=50, verbose_name="Rol", null=True)

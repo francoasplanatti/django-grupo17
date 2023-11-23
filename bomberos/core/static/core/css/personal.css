@@ -7,6 +7,8 @@ form, input{
 
 .section{
     margin: 0;
+    padding: 3rem 0 3rem;
+    background-color: #FCF5ED;
 }
 
 .personal-nav{
@@ -71,7 +73,7 @@ table{
 }
 
 .tabla {
-    background-color: rgb(255, 100, 100);
+    background-color: rgb(255, 85, 85);
     padding: 2px;
     border-collapse:separate;
     border-spacing: 0px;
@@ -90,7 +92,7 @@ tr{
 }
 
 tr:hover{
-    background-color: rgb(255, 75, 75);
+    background-color: rgb(255, 70, 70);
 }
 
 tr:active{
@@ -103,12 +105,12 @@ table thead{
 }
 
 table tbody{
-    background-color: rgb(255, 100, 100);
+    background-color: rgb(255, 85, 85);
     color: var(--primary-color);
 }
 
 table tfoot{
-    background-color: rgb(255, 100, 100);
+    background-color: rgb(255, 85, 85);
     color: var(--primary-color);
 }
 
@@ -150,7 +152,7 @@ table tfoot{
     justify-content: center;
 }
 
-.jefe-btn{
+.personal-btn{
     display: flex;
     height: 40px;
     background-color: var(--secondary-color);
@@ -169,3 +171,11 @@ table tfoot{
 ul{
     padding: 20px 0;
 }
+
+.nav__personal{
+    background-color: rgb(255, 100, 100);
+    border: 10px solid rgb(255, 100, 100);
+    border-radius: 20px;
+    color: var(--primary-color);
+}
+

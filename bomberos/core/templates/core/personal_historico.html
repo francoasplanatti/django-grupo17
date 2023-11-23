@@ -51,15 +51,15 @@
         <tfoot>
             <tr>
                 {% if personal_historico.count > 0 %}
-                    <td colspan="7">Cantidad de personal: {{ personal_historico.count }}</td>
+                    <td colspan="8">Cantidad de personal: {{ personal_historico.count }}</td>
                 {% else %}
-                    <td colspan="7">No hay personal registrado</td>
+                    <td colspan="8">No hay personal registrado</td>
                 {% endif %}
             </tr>
         </tfoot>
     </table>
     <div class="add-btn">
-        <a href="{% url 'personal_form' %}" class="jefe-btn"><span>Añadir un nuevo personal</span></a>
+        <a href="{% url 'personal_form' %}" class="personal-btn nav__link"><span>Añadir un nuevo personal</span></a>
     </div>
 </section>
 

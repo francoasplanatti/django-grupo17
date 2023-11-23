@@ -6,19 +6,22 @@ from django.contrib.auth import get_user_model
 from django.contrib.auth.forms import UserChangeForm
 from django import forms
 
+
 class SGIBAdminSite(admin.AdminSite):
     site_header = "Sistema de Gestión Integral de Bomberos"
-    site_title = "SGIB - Admin"
-    index_title = ""
+    site_title = "Admin"
+    index_title = "SGIB"
     empty_value_display = "vacio"
 
 admin_site = SGIBAdminSite(name='admin')
 
 User = get_user_model()
 
+
 class CustomUserChangeForm(UserChangeForm):
     class Meta(UserChangeForm.Meta):
         model = User
+
 
 class CustomUserAdmin(UserAdmin):
     form = CustomUserChangeForm
@@ -69,12 +72,15 @@ class CustomUserAdmin(UserAdmin):
         else:
             return []
 
+
 class AreasInline(admin.TabularInline):
     model = Area.bomberos.through
+
 
 class BomberosInline(admin.TabularInline):
     model = Area.bomberos.through
     extra = 1
+
 
 class BomberoAdmin(admin.ModelAdmin):
     list_display = ( 'numero_placa', 'nombre', 'apellido', 'dni', 'area', 'rol')
@@ -82,6 +88,7 @@ class BomberoAdmin(admin.ModelAdmin):
     list_display_links = ['numero_placa']
     search_fields = ['apellido']
     inlines = [AreasInline]
+
 
 class AreaAdmin(admin.ModelAdmin):
     list_display = ('nombre',)
@@ -93,6 +100,7 @@ class AreaAdmin(admin.ModelAdmin):
 
         return super().formfield_for_manytomany(db_field, request, **kwargs)
     
+
 class AltaAdmin(admin.ModelAdmin):
     list_display = ('bombero', 'area', 'fecha')
 

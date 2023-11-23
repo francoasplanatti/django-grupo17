@@ -12,7 +12,7 @@ form, input, #id_mensaje{
 .section{
     margin: 0;
     padding: 3rem 0 3rem;
-    background-color: rgb(255, 71, 71);
+    background-color: #FCF5ED;
 }
 
 .formulario{
@@ -59,3 +59,9 @@ input[type="text"], #id_mensaje{
     color: var(--secondary-color);
 }
 
+.nav__contacto {
+    background-color: rgb(255, 100, 100);
+    border: 10px solid rgb(255, 100, 100);
+    border-radius: 20px;
+    color: var(--primary-color);
+}

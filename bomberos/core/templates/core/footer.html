@@ -1,5 +1,21 @@
 <div class="footer__container">
-    <p>Franco Asplanatti, Pablo Chini, Alesis Nehring</p>
-    <p>&#169; CaC - Comisión 23655 - Grupo 17</p>
-    <!-- <p>, Jessica Paola Quispe, Maximiliano Ramón Merele</p> -->
+    <div class="footer__card">
+        <h2>Administración</h2>
+        <a href="{% url 'personal_historico' %}">Gestión de Personal</a>
+        <a href="{% url 'jefes_historico' %}">Gestión de Jefes de Área</a>
+        <a href="{% url 'vehiculos' %}">Gestión de Vehículos</a>
+    </div>
+    <div class="footer__card">
+        <h2>Nosotros</h2>
+        <a href="#">Sobre Nosotros</a>
+        <a href="#">Cuarteles</a>
+        <a href="{% url 'contacto' %}">Contacto</a>
+    </div>
+    <div class="footer__card">
+        <p>Franco Asplanatti</p>
+        <p>Pablo Chini</p>
+        <p>Alesis Nehring</p>
+        <p>&#169; CaC - Comisión 23655 - Grupo 17</p>
+        <!-- <p>, Jessica Paola Quispe, Maximiliano Ramón Merele</p> -->
+    </div>
 </div>

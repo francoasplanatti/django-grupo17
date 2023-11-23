@@ -62,6 +62,7 @@ class JefesModelForm(forms.ModelForm):
         
         return cuit
     
+    
 class ContactoForm(forms.Form):
     titulo = forms.CharField(
         label="Título", 

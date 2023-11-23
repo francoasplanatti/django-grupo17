@@ -8,6 +8,8 @@ form, input{
 
 .section{
     margin: 0;
+    padding: 3rem 0 3rem;
+    background-color: #FCF5ED;
 }
 
 .formulario{
@@ -47,4 +49,11 @@ input[type="submit"]{
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+.nav__vehiculos{
+    background-color: rgb(255, 100, 100);
+    border: 10px solid rgb(255, 100, 100);
+    border-radius: 20px;
+    color: var(--primary-color);
 }

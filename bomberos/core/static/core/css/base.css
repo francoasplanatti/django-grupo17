@@ -3,7 +3,7 @@
 *{
     margin: 0;
     padding: 0;
-    box-sizing: border-box;
+    /* box-sizing: border-box; */
     text-decoration: none;
     outline: none;
     /* border: none; */
@@ -31,7 +31,8 @@ html{
 }
 
 body {
-    background-color: var(--primary-color);
+    /* background-color: var(--primary-color); */
+    background-color: rgb(255, 178, 178);
 }
 
 header {
@@ -40,10 +41,11 @@ header {
     left: 0;
     width: 100%;
     background: var(--primary-color);
-    padding: 2rem 9%;
+    padding: 1rem 5%;
     display: flex;
     justify-content: space-between;
     align-items: center;
+    background-color: rgb(255, 178, 178);
     /* z-index: 1000; */
 }
 
@@ -56,7 +58,6 @@ header .navbar a {
     display: inline-block;
     font-size: 1.3rem;
     margin-left: 3rem;
-    color: var(--secondary-color);
     font-weight: 900;
 
 }
@@ -146,10 +147,9 @@ header .modo {
     align-items: center;
 }
 
-/* .nav__list{
-    grid-template-columns: repeat(3, 1fr);
-    gap: 3rem;
-} */
+.nav__personal, .nav__vehiculos, .nav__contacto{
+    color: var(--secondary-color);
+}
 
 .nav__link{
     display: inline-flex;
@@ -168,30 +168,6 @@ header .modo {
 
 }
 
-/* .nav__link span{
-    position: relative;
-    z-index: 2;
-}
-
-.nav__link::after{
-    content: "";
-    width: 1px;
-    height: 1px;
-    background: none;
-    position: absolute;
-    z-index: 1;
-    top: 50%;
-    left: 50%;
-    transition: .3s ease-in-out all;
-    border-radius: 100px;
-    transform-origin: center;
-}
-
-.nav__link:hover::after{
-    transform: scale(500);
-    background: var(--red-color);
-} */
-
 .nav__link:hover {
     background: var(--red-color);
 }
@@ -199,13 +175,28 @@ header .modo {
     /* Footer */
 
 .footer{
-    /* background-color: #000; */
-    padding-top: 2rem;
+    background-color: rgb(255, 178, 178);
+    padding: 2rem 0 2rem;
 }
 
 .footer__container{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
     font-size: 1rem;
     color: var(--secondary-color);
     font-weight: 900;
-    text-align: center;
+    margin: 0 50px 0;
+}
+
+.footer__card {
+    display: flex;
+    flex-direction: column;
+    padding: 0 20px 0;
+    justify-content: end;
+}
+
+.footer__card a, .footer__card p {
+    color: var(--secondary-color);
+    text-decoration: none;
+    padding-top: 10px;
 }

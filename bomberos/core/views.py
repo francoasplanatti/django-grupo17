@@ -105,6 +105,7 @@ class JefeListView(LoginRequiredMixin, PermissionRequiredMixin, ListView):
     template_name = 'core/jefes_historico.html'
     ordering = ['cuit']
 
+
 @login_required
 def editarJefe(request, dni):
     jefe = Jefe.objects.get(dni=dni)
