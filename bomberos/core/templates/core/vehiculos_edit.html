@@ -10,7 +10,7 @@
 
 <section class="section">
     <div class="titulo">
-        <h2>Crear nuevo vehículo</h2>
+        <h2>Editar vehículo</h2>
     </div>
     <div class="errors">
         {% if form.errors %}
@@ -23,7 +23,7 @@
             {% endfor %}
         {% endif %}
     </div>
-    <form method="POST" action="{% url 'vehiculos_form' %}">
+    <form method="POST" action="{% url 'editarVehiculo' vehiculo.patente %}">
         {% csrf_token %}
         <div class="formulario">
             {% for field in form %}

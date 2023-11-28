@@ -1,3 +1,4 @@
+// Mensaje éxito
 
 const formulario = document.getElementById("formulario");
 
@@ -7,7 +8,7 @@ if(formulario){
         Swal.fire({
             position: 'center',
             icon: 'success',
-            title: 'Registro Exitoso',
+            title: 'Enviado con éxito',
             showConfirmButton: false,
             timer: 2500,
             timerProgressBar: true,

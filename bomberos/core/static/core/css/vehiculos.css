@@ -36,6 +36,7 @@ form, input{
 }
 
 input[type="submit"]{
+    margin-top: 20px;
     display: flex;
     background-color: var(--secondary-color);
     color: var(--primary-color);
@@ -56,4 +57,100 @@ input[type="submit"]{
     border: 10px solid rgb(255, 100, 100);
     border-radius: 20px;
     color: var(--primary-color);
+}
+
+.errors{
+    text-align: center;
+}
+
+ul{
+    padding: 20px 0;
+}
+
+table{
+    border-collapse: collapse;
+    width: 90%;
+    margin: 0 auto;
+    cursor: pointer;
+    border-radius: 300px;
+}
+
+.tabla {
+    background-color: rgb(255, 85, 85);
+    padding: 2px;
+    border-collapse:separate;
+    border-spacing: 0px;
+    border-radius: 10px;
+    -moz-border-radius:10px;
+    -webkit-border-radius: 5px;    
+}
+
+td, th{
+    text-align: center;
+    padding: 10px;
+}
+
+tr{
+    transition: 0.2s all;
+}
+
+tr:hover{
+    background-color: rgb(255, 70, 70);
+}
+
+tr:active{
+    background-color: rgb(255, 40, 40);
+}
+
+table thead{
+    background-color: red;
+    color: var(--primary-color);
+}
+
+table tbody{
+    background-color: rgb(255, 85, 85);
+    color: var(--primary-color);
+}
+
+table tfoot{
+    background-color: rgb(255, 85, 85);
+    color: var(--primary-color);
+}
+
+.editar, .eliminar{
+    padding: 10px 0;
+}
+
+.editar-btn{
+    font-size: 1rem;
+    color: var(--primary-color);
+    font-weight: 500;
+    background-color: rgb(63, 131, 0);
+    border-radius: 20px;
+    padding: 5px 20px;
+    border: none;
+}
+
+.editar-btn:hover{
+    background-color: rgb(38, 78, 0);
+}
+
+.eliminar-btn{
+    font-size: 1rem;
+    color: var(--primary-color);
+    font-weight: 500;
+    background-color: red;
+    border-radius: 20px;
+    padding: 5px 20px;
+    border: none;
+}
+
+.eliminar-btn:hover{
+    background-color: rgb(173, 0, 0);
+}
+
+.add-btn{
+    margin: 20px 0;
+    display: flex;
+    justify-content: center;
 }

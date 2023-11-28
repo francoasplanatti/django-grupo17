@@ -10,12 +10,52 @@
 {% block content %}
 
     <section class="section">
+
         <div class="titulo">
-            <h2>Gestión de Vehículos</h2>
+            <h2>Gestión de vehículos</h2>
         </div>
-        
-        <div class="vehiculos-nav">
-            <a href="{% url 'vehiculos_form' %}" class="nav__link"><span>Nuevo vehículo</span></a>
+
+        <table class="tabla">
+            <thead>
+                <tr>
+                    <th>Marca</th>
+                    <th>Modelo</th>
+                    <th>Patente</th>
+                    <th>Vencimiento del VTV</th>
+                    {% if perms.core.view_vehiculo %}
+                    <th colspan="2">Opciones</th>
+                    {% endif %}
+                </tr>
+            </thead>
+            <tbody>
+                {% for vehiculo in vehiculos %}
+                <tr>
+                    <td>{{ vehiculo.marca }}</td>
+                    <td>{{ vehiculo.modelo }}</td>
+                    <td>{{ vehiculo.patente }}</td>
+                    <td>{{ vehiculo.vencimiento_vtv }}</td>
+                    {% if perms.core.view_vehiculo %}
+                    <td class="editar"><a href="../editarVehiculo/{{ vehiculo.patente }}"><button class="editar-btn">Editar</button></a></td>
+                    <td class="eliminar"><a href="../eliminarVehiculo/{{ vehiculo.patente }}"><button class="eliminar-btn">Eliminar</button></a></td>
+                    {% endif %}
+                </tr>
+                {% empty %}
+                <tr>
+                </tr>
+                {% endfor %}
+            </tbody>
+            <tfoot>
+                <tr>
+                    {% if vehiculos.count > 0 %}
+                        <td colspan="8">Cantidad de vehículos: {{ vehiculos.count }}</td>
+                    {% else %}
+                        <td colspan="8">No hay vehículos registrados</td>
+                    {% endif %}
+                </tr>
+            </tfoot>
+        </table>
+        <div class="add-btn">
+            <a href="{% url 'vehiculos_form' %}" class="personal-btn nav__link"><span>Añadir un nuevo vehículo</span></a>
         </div>
     </section>
 

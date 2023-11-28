@@ -13,13 +13,25 @@
         <div class="titulo">
             <h2>Contacto</h2>
         </div>
-        <form class="formulario" method="POST" action="{% url 'contacto' %}">
-            {% csrf_token %}
-            {{ create_form.as_p }}
+
+        <form action="" class="contact__form formulario">
+            <p>
+                <label for="" class="contact__label">Título</label>
+                <input type="text" class="contact__input form_style" placeholder="Escribe un título">
+            </p>
+            <div>
+                <label for="" class="contact__label">Mensaje</label>
+                <textarea name="mensaje" id="" cols="40" rows="10" class="contact__input form_style" placeholder="Escribe un mensaje"></textarea>
+            </div>
             <div class="submit-btn">
-                <input type="submit" id="formulario">
+                <a href="https://mail.google.com/mail/u/0/?fs=1&to=francoasplanatti@gmail.com&tf=cm" class="button" target="_blank">
+                Enviar mensaje
+                </a>
             </div>
         </form>
+
     </section>
-    
+
+    <script src="{% static 'core/js/contacto.js' %}"></script>
+
 {% endblock %}

@@ -36,8 +36,15 @@ class Jefe(Persona):
 class Vehiculo(models.Model):
     marca = models.CharField(max_length=100, verbose_name="Marca")
     modelo = models.CharField(max_length=100, verbose_name="Modelo")
-    patente = models.CharField(max_length=100, verbose_name="Patente")
+    patente = models.CharField(verbose_name="Patente", unique=True)
     vencimiento_vtv = models.DateField(verbose_name="Fecha de vencimiento")
+
+    def clean_patente(self):
+        patente = self.cleaned_data['patente']
+        
+        if not (patente[0:3].isalpha() and patente[4:6].isdigit()) or ((patente[0:2].isalpha() and patente[3:4].isdigit()) and patente[5:6].isalpha()): 
+            raise ValidationError("La patente no es válida")
+        return self.cleaned_data['patente']
 
     def __str__(self):
         return self.marca + " " + self.modelo

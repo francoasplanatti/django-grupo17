@@ -23,8 +23,10 @@ urlpatterns = [
     path('eliminarJefe/<dni>', views.eliminarJefe, name="eliminarJefe"),
 
         # Vehículos
-    path('vehiculos', views.vehiculos, name='vehiculos'),
-    path('vehiculos/form', views.vehiculos_form, name="vehiculos_form"),
+    path('vehiculos', views.VehiculosListView.as_view(), name='vehiculos'),
+    path('vehiculos/form', views.VehiculosCreateView.as_view(), name="vehiculos_form"),
+    path('editarVehiculo/<patente>', views.editarVehiculo, name="editarVehiculo"),
+    path('eliminarVehiculo/<patente>', views.eliminarVehiculo, name="eliminarVehiculo"),
 
         # Contacto
     path('contacto', views.contacto, name='contacto'),

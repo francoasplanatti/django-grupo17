@@ -1,6 +1,6 @@
 from django import forms
 from django.core.exceptions import ValidationError
-from .models import Jefe, Bombero
+from .models import Jefe, Bombero, Vehiculo
 
 
 class BomberosModelForm(forms.ModelForm):
@@ -21,29 +21,21 @@ class BomberosModelForm(forms.ModelForm):
         return self.cleaned_data
 
 
-class VehiculosForm(forms.Form):
-    marca = forms.CharField(
-        label="Marca", 
-        required=True,
-        )
-    modelo = forms.CharField(
-        label="Modelo", 
-        required=True
-        )
-    patente = forms.CharField(
-        label="Patente", 
-        required=True
-        )
-    vencimiento_vtv = forms.DateField(
-        label="Vencimiento del VTV", 
-        required=True
-        )
+class VehiculosModelForm(forms.ModelForm):
+    class Meta:
+        model = Vehiculo
+        fields = '__all__'
     
     def clean_patente(self):
-        if len(str(self.cleaned_data["patente"])) > 7 or len(str(self.cleaned_data["patente"])) < 6: 
+        patente = self.cleaned_data.get('patente', '').strip()
+
+        if len(str(patente)) > 7 or len(str(patente)) < 6: 
             raise ValidationError("La patente no es válida")
         
-        return self.cleaned_data["patente"]
+        if not (patente[0:3].isalpha() and patente[4:6].isdigit()) or ((patente[0:2].isalpha() and patente[3:4].isdigit()) and patente[5:6].isalpha()): 
+            raise ValidationError("La patente no es válida")
+        
+        return patente
     
 
 class JefesModelForm(forms.ModelForm):
@@ -61,17 +53,3 @@ class JefesModelForm(forms.ModelForm):
             raise ValidationError("El CUIT debe tener 11 dígitos.")
         
         return cuit
-    
-    
-class ContactoForm(forms.Form):
-    titulo = forms.CharField(
-        label="Título", 
-        required=True,
-        widget=forms.TextInput(attrs={'class': 'form_style', 'placeholder':'Inserte un título'})
-        )
-    mensaje = forms.CharField(
-        label="Mensaje", 
-        required=True,
-        widget=forms.Textarea(attrs={'class': 'form_style', 'placeholder':'Inserte un mensaje'})
-        )
-    

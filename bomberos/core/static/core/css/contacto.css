@@ -1,4 +1,4 @@
-form, input, #id_mensaje{
+form, input, #id_mensaje, .contact__input, .button{
     font-size: 1rem;
     color: var(--primary-color);
     font-weight: 900;
@@ -18,7 +18,7 @@ form, input, #id_mensaje{
 .formulario{
     display: flex;
     flex-direction: column;
-    padding: 0 50px 0;
+    padding: 0 200px 0;
     grid-template-columns: repeat(2, 1fr);
     gap: 1rem;
 }
@@ -38,7 +38,7 @@ form, input, #id_mensaje{
     align-items: center;
 }
 
-input[type="submit"]{
+.button{
     display: flex;
     background-color: var(--secondary-color);
     color: var(--primary-color);
@@ -47,7 +47,8 @@ input[type="submit"]{
     justify-content: center;
 }
 
-:required{
+:required, .contact__input{
+    color: var(--secondary-color);
     width: 100%;
     margin-top: 5px;
     border-color: black;
@@ -64,4 +65,8 @@ input[type="text"], #id_mensaje{
     border: 10px solid rgb(255, 100, 100);
     border-radius: 20px;
     color: var(--primary-color);
+}
+
+.contact__label{
+    color: var(--secondary-color);
 }

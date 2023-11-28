@@ -6,7 +6,7 @@ from django.contrib.auth.mixins import LoginRequiredMixin, PermissionRequiredMix
 from django.db import IntegrityError
 from django.views.generic.edit import CreateView
 from django.views.generic.list import ListView
-from .forms import VehiculosForm, ContactoForm, JefesModelForm, BomberosModelForm
+from .forms import VehiculosModelForm, JefesModelForm, BomberosModelForm
 from .models import Bombero, Jefe, Vehiculo
 
 def index(request):
@@ -22,7 +22,7 @@ class BomberoCreateView(LoginRequiredMixin, PermissionRequiredMixin, CreateView)
     model = Bombero
     template_name = 'core/personal_form.html'
     success_url = 'historico'
-    fields = '__all__'
+    form_class = BomberosModelForm
 
 
 class BomberoListView(LoginRequiredMixin, PermissionRequiredMixin, ListView):
@@ -41,6 +41,7 @@ def editarBombero(request, dni):
         form = BomberosModelForm(request.POST, instance=bombero)
         if form.is_valid():
             form.save()
+            messages.info(request, "Información guardada correctamente")
             return redirect('/personal/historico')
 
     context = {'bombero':bombero, 'form': form}
@@ -58,36 +59,43 @@ def eliminarBombero(request, dni):
 def vehiculos(request):
     return render(request, "core/vehiculos.html")
 
+
+class VehiculosCreateView(LoginRequiredMixin, PermissionRequiredMixin, CreateView):
+    permission_required = ("core.view_vehiculo")
+    model = Vehiculo
+    template_name = 'core/vehiculos_form.html'
+    success_url = '/../vehiculos'
+    form_class = VehiculosModelForm
+
+
+class VehiculosListView(LoginRequiredMixin, PermissionRequiredMixin, ListView):
+    permission_required = ("core.view_vehiculo")
+    model = Vehiculo
+    context_object_name = 'vehiculos'
+    template_name = 'core/vehiculos.html'
+    ordering = ['marca']
+
+
 @login_required
-def vehiculos_form(request):
-    context = {}
+def editarVehiculo(request, patente):
+    vehiculo = Vehiculo.objects.get(patente=patente)
+    form = VehiculosModelForm(instance=vehiculo)
 
-    if request.method == "POST":
-        vehiculos_form = VehiculosForm(request.POST)
+    if request.method == 'POST':
+        form = VehiculosModelForm(request.POST, instance=vehiculo)
+        if form.is_valid():
+            form.save()
+            return redirect('/vehiculos')
 
-        if vehiculos_form.is_valid():
-            nuevo_vehiculo = Vehiculo(
-                marca = vehiculos_form.cleaned_data['marca'],
-                modelo = vehiculos_form.cleaned_data['modelo'],
-                patente = vehiculos_form.cleaned_data['patente'],
-                vencimiento_vtv = vehiculos_form.cleaned_data['vencimiento_vtv'],
-            )
+    context = {'vehiculo':vehiculo, 'form': form}
+    return render(request, 'core/vehiculos_edit.html', context)
 
-            try:
-                nuevo_vehiculo.save()
+@login_required
+def eliminarVehiculo(request, patente):
+    vehiculo = Vehiculo.objects.get(patente=patente)
+    vehiculo.delete()
 
-            except IntegrityError as ie:
-                messages.error(request, "Ocurrió un error al intentar registrar el vehículo")
-                return redirect(reverse("index"))
-
-            messages.info(request, "Vehículo registrado correctamente")
-            return redirect(reverse("vehiculos"))
-    else:
-        vehiculos_form = VehiculosForm()
-
-    context['vehiculos_form'] = VehiculosForm
-
-    return render(request, 'core/vehiculos_form.html', context)
+    return redirect('/vehiculos')
 
 
 class JefeCreateView(CreateView, PermissionRequiredMixin, LoginRequiredMixin):
@@ -95,7 +103,7 @@ class JefeCreateView(CreateView, PermissionRequiredMixin, LoginRequiredMixin):
     model = Jefe
     template_name = 'core/jefes_form.html'
     success_url = 'historico'
-    fields = '__all__'
+    form_class = JefesModelForm
 
 
 class JefeListView(LoginRequiredMixin, PermissionRequiredMixin, ListView):
@@ -129,16 +137,4 @@ def eliminarJefe(request, dni):
 
 
 def contacto(request):
-    if request.method == "POST":
-        formulario = ContactoForm(request.POST)
-        if formulario.is_valid():
-            messages.info(request, "Mensaje Enviado Correctamente")
-            return redirect(reverse("index"))
-    else:
-        formulario = ContactoForm()
-
-    context = {
-        'create_form': formulario
-    }
-
-    return render(request, "core/contacto.html", context)
+    return render(request, "core/contacto.html")
